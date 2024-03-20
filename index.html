@@ -1,0 +1,75 @@
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Barcode to print</title>
+  <link rel="stylesheet" href="style.css">
+    <script src="JsBarcode.all.min.js"></script>
+  <script>
+      var barcodeOptions = {
+          value: "123456789012",
+          format: "CODE128",
+          displayValue: true,
+
+      }
+      function renderBarcode(newOptions) {
+        const preOptions = newOptions ? { ...barcodeOptions, ...newOptions } : barcodeOptions;
+        console.log(preOptions);
+        barcodeOptions = preOptions;
+        try {
+            JsBarcode(".barcode",preOptions.value,preOptions)
+        } catch (e) {
+            console.error(e);
+			document.querySelector('.error').innerText = e;
+        }
+	  }
+
+  </script>
+</head>
+<body>
+  <h1 class="no-print">Barcode to print</h1>
+  <svg class="barcode print"/>
+  <div class="no-print form">
+	  <p>
+	  <label for="value">Value</label>
+      <input id="value" type=text value=123456789012  onChange="renderBarcode({value:this.value})" >
+	  </p>
+	  <!-- <label for="extraText">Extra text</label> -->
+	  <!-- <input id="extraText" type=text value="Extra text"  onChange="renderBarcode({extraText:this.value})" > -->
+	  <p>
+	  <label for="format">Format</label>
+      <input value="CODE128" list=formats onChange="renderBarcode({format:this.value})" >
+      <datalist id=formats >
+         <option>CODE128
+         <option>CODE128A
+         <option>CODE128B
+         <option>CODE128C
+         <option>UPC
+         <option>EAN13
+         <option>EAN8
+         <option>EAN5
+         <option>EAN2
+      </datalist>
+	  </p>
+	  <p>
+	  <label for="displayValue">Display value</label>
+      <input type=checkbox checked="true" class="checkbox" onChange="renderBarcode({displayValue:this.checked})" />
+	  </p>
+	  <p>
+	  <label for="width">Width</label>
+	  <input type=number value=2 onChange="renderBarcode({width:this.value})" />
+	  </p>
+	  <p>
+	  <label for="height">Height</label>
+	  <input type=number value=100 onChange="renderBarcode({height:this.value})" />
+	  </p>
+	  <p>
+  </div>
+  <p class="no-print">
+	  <em class="error"></em>
+  </p>
+
+  <div class="no-print">
+    <button onClick="window.print()">Print</button>
+  <script>renderBarcode();</script>
+</body>
+</html>

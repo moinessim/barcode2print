@@ -1,0 +1,58 @@
+/* Your screen styles go here */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    /* align-items: left; */
+    /* justify-content: center; */
+    /* height: 100vh; */
+}
+
+input {
+  padding: 3px;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 600;
+  width: 300px;
+}
+.checkbox {
+  box-shadow: none;
+  width: 20px;
+}
+
+.label {
+    width: 130px;
+    float: left;
+    display: block;
+}
+
+label::after {
+    content: ": ";
+}
+
+.error {
+    color: red;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+@media print {
+  /* Your print styles go here */
+    @page {
+        margin: 0;
+        size: landscape;
+    }
+
+    .no-print *, nav, aside {
+        display: none;
+    }
+
+    .print {
+        visibility: visible;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+    }
+
+}
