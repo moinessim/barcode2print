@@ -36,6 +36,13 @@ label::after {
     margin-top: 5px;
 }
 
+.wrapper  {
+    display: inline-block;
+    text-align: center;
+    font-family: monospace;
+    font-size: 20px;
+}
+
 @media print {
   /* Your print styles go here */
     @page {
@@ -43,7 +50,7 @@ label::after {
         size: landscape;
     }
 
-    .no-print *, nav, aside {
+    .no-print *, .no-print , nav, aside {
         display: none;
     }
 
