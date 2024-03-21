@@ -44,8 +44,10 @@
 	  <label for="value">Value</label>
       <input id="value" type=text value=123456789012  onChange="renderBarcode({value:this.value})" >
 	  </p>
+	  <p>
 	  <label for="extraText">Extra text</label>
 	  <input id="extraText" type=text value=""  onChange="renderExtraText(this.value)" >
+	  </p>
 	  <p>
 	  <label for="format">Format</label>
       <input value="CODE128" list=formats onChange="renderBarcode({format:this.value})" >
